@@ -12,6 +12,16 @@
 
 // --------------------1) Create a function that takes in a string and returns a string with a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0.
 
+//Psuedocode: 
+// Input: 
+// "Lackadaisical" "Gobbledygook" "Eccentric"
+// Output: "L4ck4d41s1c4l" "G0bbl3dyg00k" "3cc3ntr1c"
+// write a test that will include expect and to euqal statements for the variables provided
+// run the test and see it fail it should be a not defined error
+// create a function 
+// console log the test and variables
+// test should pass
+
 // a) Create a test with expect statements using the variables provided.
 
 const secretCodeWord1 = "Lackadaisical"
@@ -21,8 +31,29 @@ const secretCodeWord2 = "Gobbledygook"
 const secretCodeWord3 = "Eccentric"
 // Expected output: "3cc3ntr1c"
 
+describe("decoder", () => {
+    it ("takes in a string and returns a string with a coded message.", () => {
+      expect(decoder(secretCodeWord1)).toEqual(["L4ck4d41s1c4l"]) 
+      expect(decoder(secretCodeWord2)).toEqual(["G0bbl3dyg00k"])
+      expect(decoder(secretCodeWord3)).toEqual(["3cc3ntr1c"])
+    })
+  })
+
+//   FAIL  ./code-challenges.test.js
+//   decoder
+//     ✕ takes in a string and returns a string with a coded message. (1 ms)
+
+//   ● decoder › takes in a string and returns a string with a coded message.
+
+//     ReferenceError: decoder is not defined
+
 // b) Create the function that makes the test pass.
 
+const decoder = (word) => {
+let newWord = word.replace(/a/, "4")
+// this is right where i got stuck i wasn't sure how to implement this method or if i was even supposed to use this one in particular
+}
+console.log(decoder(secretCodeWord1))
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
 
 // a) Create a test with expects statement using the variable provided.
@@ -34,8 +65,27 @@ const letterA = "a"
 const letterE = "e"
 // Expected output: ["Cherry", "Blueberry", "Peach"]
 
-// b) Create the function that makes the test pass.
+describe("fruitChecker", () => {
+    it ("takes in an array of words and a single letter and returns an array of all the words containing that particular letter", () => {
+      expect(fruitChecker(letterA)).toEqual(["Mango", "Apricot", "Peach"]) 
+      expect(fruitChecker(letterE)).toEqual(["Cherry", "Blueberry", "Peach"])
+    })
+  })
 
+//   FAIL  ./code-challenges.test.js
+//   fruitChecker
+//     ✕ takes in an array of words and a single letter and returns an array of all the words containing that particular letter
+
+//   ● fruitChecker › takes in an array of words and a single letter and returns an array of all the words containing that particular letter
+
+//     ReferenceError: fruitChecker is not defined
+
+// b) Create the function that makes the test pass.
+const fruitChecker = (letter) => {
+    const letterFilter = fruitArray.filter(letter) 
+}
+console.log(fruitChecker(letterA))
+console.log(fruitChecker(letterE))
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a "full house". A full house is exactly one pair and one three of a kind.
 
 // a) Create a test with expect statements using the variable provided.
