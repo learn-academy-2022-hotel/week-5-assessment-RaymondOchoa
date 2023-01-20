@@ -13,12 +13,12 @@
 // --------------------1) Create a function that takes in a string and returns a string with a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0.
 
 //Psuedocode: 
-// Input: 
-// "Lackadaisical" "Gobbledygook" "Eccentric"
-// Output: "L4ck4d41s1c4l" "G0bbl3dyg00k" "3cc3ntr1c"
+// Input: strings of coded words
+// Output: strings of decoded words
 // write a test that will include expect and to euqal statements for the variables provided
 // run the test and see it fail it should be a not defined error
-// create a function 
+// create a function that utilizes the .replace method to swap letters obtained from the translatedLetters array if the letters match 
+// use gi (global ignore) to be case insensitive
 // console log the test and variables
 // test should pass
 
@@ -49,12 +49,36 @@ describe("decoder", () => {
 
 // b) Create the function that makes the test pass.
 
-const decoder = (word) => {
-let newWord = word.replace(/a/, "4")
-// this is right where i got stuck i wasn't sure how to implement this method or if i was even supposed to use this one in particular
+const translatedLetters = {
+  A: 4,
+  a: 4,
+  E: 3,
+  e: 3,
+  I: 1,
+  i: 1,
+  O: 0,
+  o: 0
 }
+
+const decoder = (string) => {
+  return string.replace(/[aeio]/gi, (match) =>
+      translatedLetters[match])
+  }
 console.log(decoder(secretCodeWord1))
+console.log(decoder(secretCodeWord2))
+console.log(decoder(secretCodeWord3))
+
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
+
+//Psuedocode: 
+// Input: array of words and strings of letters to check for
+// Output: an array of the words that contain those letters
+// write a test that will include expect and to euqal statements for the variables provided
+// run the test and see it fail it should be a not defined error
+// create a function that uses the .filter and .includes methods to check for words in the array that include the letter variables
+// use .toLowerCase to be inclusive of letters that are lowercased 
+// console log the test and variables
+// test should pass
 
 // a) Create a test with expects statement using the variable provided.
 
@@ -81,12 +105,26 @@ describe("fruitChecker", () => {
 //     ReferenceError: fruitChecker is not defined
 
 // b) Create the function that makes the test pass.
-const fruitChecker = (letter) => {
-    const letterFilter = fruitArray.filter(letter) 
+
+const fruitChecker = (array, letter) => {
+    return array.filter((array) => array.toLowerCase().includes(letter))
 }
+
 console.log(fruitChecker(letterA))
 console.log(fruitChecker(letterE))
+
+
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a "full house". A full house is exactly one pair and one three of a kind.
+
+//Psuedocode: 
+// Input: arrays of numbers
+// Output: boolean values
+// write a test that will include expect and to euqal statements for the variables provided
+// run the test and see it fail it should be a not defined error
+// create a function that uses the .sort method on the array to return a boolean value based on if there are pairs by using the indexes of th numbers in the array
+// console log the test and variables
+// test should pass
+
 
 // a) Create a test with expect statements using the variable provided.
 
@@ -99,4 +137,32 @@ const hand3 = [5, 5, 5, 5, 4]
 const hand4 = [7, 2, 7, 2, 7]
 // Expected output: true
 
+
+describe("cardChecker", () => {
+  it ("takes in an array of 5 numbers and determines whether or not the array is a 'full house'.", () => {
+    expect(cardChecker(hand1)).toEqual(true) 
+    expect(cardChecker(hand2)).toEqual([false])
+    expect(cardChecker(hand3)).toEqual([false])
+    expect(cardChecker(hand4)).toEqual([true])
+  })
+})
 // b) Create the function that makes the test pass.
+
+const cardChecker = (array) => {	
+  array.sort()
+	
+  if(array[0] === array[1] && array[0] === array[2] && array[3] === array[4]) {
+      return true
+  } 
+    else if(array[0] === array[1] && array[2] === array[3] && array[2] === array[4]) {
+      return true
+  } else {
+      return false
+  }
+
+	}
+
+  console.log(cardChecker(hand1))
+  console.log(cardChecker(hand2))
+  console.log(cardChecker(hand3))
+  console.log(cardChecker(hand4))
